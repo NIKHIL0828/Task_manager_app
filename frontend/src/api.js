@@ -3,7 +3,7 @@ import { API_URL } from "./utils"
 
 export const CreateTask = async (taskObj) => {
     const url = `${API_URL}/tasks`;
-    console.log('url ', url)
+    // console.log('url ', url)
     const options = {
         method: 'POST',
         headers: {
@@ -11,17 +11,20 @@ export const CreateTask = async (taskObj) => {
         },
         body: JSON.stringify(taskObj)
     };
+    // console.log("step 1")
     try {
         const result = await fetch(url, options);
         const data = await result.json();
+        // console.log("step 2")
         return data;
     } catch (err) {
+        console.log("Create task error", err)
         return err;
     }
 }
 export const GetAllTasks = async () => {
     const url = `${API_URL}/tasks`;
-    console.log('url ', url)
+    // console.log('url ', url)
     const options = {
         method: 'GET',
         headers: {

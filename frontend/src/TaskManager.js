@@ -12,15 +12,15 @@ function TaskManager() {
     const handleTask = () => {
         if (updateTask && input) {
             //upadte api call
-            console.log('update api call');
+            // console.log('update api call');
             const obj = {
-                taskName: input,
+                TaskName: input,
                 isDone: updateTask.isDone,
                 _id: updateTask._id
             }
             handleUpdateItem(obj);
         } else if (updateTask === null && input) {
-            console.log('create api call')
+            // console.log('create api call')
             //create api call
             handleAddTask();
         }
@@ -29,13 +29,13 @@ function TaskManager() {
 
     useEffect(() => {
         if (updateTask) {
-            setInput(updateTask.taskName);
+            setInput(updateTask.TaskName);
         }
     }, [updateTask])
 
     const handleAddTask = async () => {
         const obj = {
-            taskName: input,
+            TaskName: input,
             isDone: false
         }
         try {
@@ -89,9 +89,9 @@ function TaskManager() {
     }
 
     const handleCheckAndUncheck = async (item) => {
-        const { _id, isDone, taskName } = item;
+        const { _id, isDone, TaskName } = item;
         const obj = {
-            taskName,
+            TaskName,
             isDone: !isDone
         }
         try {
@@ -111,9 +111,9 @@ function TaskManager() {
     }
 
     const handleUpdateItem = async (item) => {
-        const { _id, isDone, taskName } = item;
+        const { _id, isDone, TaskName } = item;
         const obj = {
-            taskName,
+            TaskName,
             isDone: isDone
         }
         try {
@@ -135,7 +135,7 @@ function TaskManager() {
     const handleSearch = (e) => {
         const term = e.target.value.toLowerCase();
         const oldTasks = [...copyTasks];
-        const results = oldTasks.filter((item) => item.taskName.toLowerCase().includes(term));
+        const results = oldTasks.filter((item) => item.TaskName.toLowerCase().includes(term));
         setTasks(results);
     }
     return (
@@ -185,7 +185,7 @@ function TaskManager() {
                 align-items-center'>
                             <span
                                 className={item.isDone ? 'text-decoration-line-through' : ''}
-                            >{item.taskName}
+                            >{item.TaskName}
                             </span>
 
                             <div className=''>
